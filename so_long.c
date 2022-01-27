@@ -1,68 +1,8 @@
-#include <unistd.h>
-#include <stdio.h>
-#include "./mlx/mlx.h"
-/*------------------------------------------------------------------------------------------*/
-/*
- * we have an image but how exactly do we write pixels to this? For this we need to get 
- * the memory address on which we will mutate the bytes accordingly.
- * We retrieve this address as follows:
- */
-	typedef struct	s_data 
-	{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	}	t_data;
+#include "so_long.h"
+
 /*------------------------------------------------------------------------------------------*/
 /* Global variable to manublate through del_key function. */
 int	i = 0;
-/*------------------------------------------------------------------------------------------*/
-void	ft_putchar(int c)
-{
-	write(1, &c, 1);
-}
-/*------------------------------------------------------------------------------------------*/
-void	ft_putstr(char *s)
-{
-	int		len;
-	int		i;
-
-	len = 0;
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
-}
-/*------------------------------------------------------------------------------------------*/
-void	ft_putnbr(int n)
-{
-	int		len;
-
-	len = 0;
-	if (n <= 2147483647 && n >= -2147483648)
-	{
-		if (n < 0)
-		{
-			if (n == -2147483648)
-				return (ft_putstr("-2147483648"));
-			ft_putchar('-');
-			n = n * -1;
-		}
-		if (n <= 9)
-			ft_putchar(n + '0');
-		if (n > 9)
-		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
-		}
-	}
-}
 /*------------------------------------------------------------------------------------------*/
 int	del_key()
 {
