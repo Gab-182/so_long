@@ -1,4 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/29 20:42:11 by gabdoush          #+#    #+#             */
+/*   Updated: 2022/01/29 20:56:58 by gabdoush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
+
+/*------------------------------------------------------------------------------------------*/
+void	error(int i, char *buffer)
+{
+	if (i == 1)
+	{
+		printf("Error: Maps is not valid\n");
+		free(buffer);
+		buffer = NULL;
+	}
+	else if (i == 2)
+	{
+		printf("Error: Maps is not valid(correct top border)\n");
+		free(buffer);
+		buffer = NULL;
+	}
+	else if (i == 3)
+	{
+		printf("Error: Maps is not valid(correct bottom border)\n");
+		free(buffer);
+		buffer = NULL;
+	}
+	else if (i == 4)
+	{
+		printf("Error: Maps is not valid(correct side border)\n");
+		free(buffer);
+		buffer = NULL;
+	}
+	exit(EXIT_FAILURE);
+}
 /*------------------------------------------------------------------------------------------*/
 void	ft_putchar(int c)
 {
@@ -7,17 +49,10 @@ void	ft_putchar(int c)
 /*------------------------------------------------------------------------------------------*/
 void	ft_putstr(char *s)
 {
-	int		len;
-	int		i;
-
-	len = 0;
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		ft_putchar(s[i]);
-		i++;
+		write(1, s, 1);
+		s++;
 	}
 }
 /*------------------------------------------------------------------------------------------*/

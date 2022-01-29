@@ -6,7 +6,7 @@
 #    By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 18:22:15 by gabdoush          #+#    #+#              #
-#    Updated: 2022/01/27 18:26:29 by gabdoush         ###   ########.fr        #
+#    Updated: 2022/01/29 20:32:05 by gabdoush         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = so_long
 FILES = so_long.c\
 		so_long_utils.c\
 		map_checker.c\
-		handling_errors.c\
+		handling_maps.c\
 		./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c
 
