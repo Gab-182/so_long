@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 10:45:04 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/13 10:45:05 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/01/30 12:38:59 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *edited_buffer, char *buff)
 	while (buff[j] != '\0')
 		str[i++] = buff[j++];
 	str[ft_strlen(edited_buffer) + ft_strlen(buff)] = '\0';
-	free(edited_buffer);
+	//free(edited_buffer);
 	return (str);
 }
 

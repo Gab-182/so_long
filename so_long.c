@@ -13,7 +13,11 @@
 /*------------------------------------------------------------------------------------------*/
 int	main(void)
 {
-	checking_map_walls();
+	// checking_map_rectangle();
+	// check_top_walls();
+	// check_bottom_wall();
+	// check_middle_walls();
+	
 	map_drawer();
 // 	//checking_map_walls();
 // 	void	*mlx_ptr;
