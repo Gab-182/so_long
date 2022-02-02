@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:44:13 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/01/30 12:08:03 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:25:48 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	check_bottom_wall(void)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		last_line = get_next_line(fd);
 		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		last_line = get_next_line(fd);
 	}
 	while (last_line[i] != '\0' && last_line[i] != '\n')
 	{
@@ -34,9 +36,7 @@ void	check_bottom_wall(void)
 			error(4, last_line);
 		i++;
 	}
-	free(line);
 	free(last_line);
-	line = NULL;
 	last_line = NULL;
 	close(fd);
 }

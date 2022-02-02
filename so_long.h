@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/01 09:25:31 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/02 22:37:40 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ typedef struct s_base
 	char	*floor;
 
 	char	*chara;
-	int		x_chara;
-	int		y_chara;
-
 	char	*token;
-	char	*exit;
+	int		tok_count;
 
+	char	*exit;
+	
 	int		width;
 	int		height;
+	
 	char	*map;
 }		t_base;
 /*-----------------------------------------------------------------------*/
