@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/02 22:37:40 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 01:59:04 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ typedef struct s_base
 	char	*chara;
 	char	*token;
 	int		tok_count;
-
-	char	*exit;
 	
+	char	*exit;
+
 	int		width;
 	int		height;
-	
+
 	char	*map;
 }		t_base;
 /*-----------------------------------------------------------------------*/
@@ -64,12 +64,19 @@ typedef struct s_data
 void			ft_putchar(int c);
 void			ft_putstr(char *s);
 void			ft_putnbr(int n);
+char			*ft_strrchr(char *s, int c);
 void			error(int i, char *buffer);
+void			extension_error(void);
 /*-----------------------------------------------------------------------*/
 void			check_bottom_wall(void);
 void			check_middle_walls(void);
 void			checking_map_rectangle(void);
 void			check_top_walls(void);
+
+void			exit_checker(t_base *base);
+void			coin_checker(t_base *base);
+void			position_checker(t_base *base);
+
 /*-----------------------------------------------------------------------*/
 void			map_drawer(void);
 

@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 20:42:11 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/01/30 13:45:16 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 01:59:10 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	error(int i, char *buffer)
 		printf("Error: Maps is not valid(middle wall)\n");
 	else if (i == 4)
 		printf("Error: Maps is not valid(bottom wall)\n");
+	else if (i == 10)
+		printf("Error: Maps is not valid('E' or 'P' or 'C' nor found)\n");
 	else
 		printf("Error: Maps is not valid\n");
 	if (buffer != NULL)
@@ -30,6 +32,13 @@ void	error(int i, char *buffer)
 		free(buffer);
 		buffer = NULL;
 	}
+	exit(EXIT_FAILURE);
+}
+
+/*------------------------------------------------------------*/
+void	extension_error(void)
+{
+	printf("Wrong file extension)\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -73,3 +82,20 @@ void	ft_putnbr(int n)
 		}
 	}
 }
+/*------------------------------------------------------------*/
+char	*ft_strrchr(char *s, int c)
+{
+	int	n;
+
+	n = ft_strlen(s);
+	while (n >= 0)
+	{
+		if (s[n] == (char)c)
+		{
+			return ((char *)&s[n]);
+		}
+		n--;
+	}
+	return (0);
+}
+/*------------------------------------------------------------*/

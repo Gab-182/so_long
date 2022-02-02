@@ -1,13 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handling_maps.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/02 22:39:31 by gabdoush          #+#    #+#             */
+/*   Updated: 2022/02/03 02:24:12 by gabdoush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
+
 /* Glopal variable */
 int	x = 0;
 int	y = 0;
-int	x_chara = 0;
-int	y_chara = 0;
-int	index_chara = 0;
-int	future_chara_index = 0;
-int	collected_coins = 0;
 
+int		col;
+int		raw;
+
+int		x_chara = 0;
+int		y_chara = 0;
+
+int		index_chara = 0;
+int		future_chara_index = 0;
+
+int		collected_coins = 0;
+int		moves = 0;
 /*=======================================================================*/
 static 	int			closing_x(void);
 static 	void		just_drawing(t_base *base);
@@ -17,6 +36,7 @@ static 	int			line_length(t_base *base);
 static 	int			check_walls(int index, t_base *base);
 static	int 		check_coins(int index_chara, t_base *base);
 static	int			check_exit(int index_chara, t_base *base);
+static void			col_raw(t_base *base);
 /*=======================================================================*/
 void			map_drawer(void)
 {
@@ -30,17 +50,13 @@ void			map_drawer(void)
 	base.exit = "./res/exit.xpm";
 	base.width = 1;
 	base.height = 1;
-
+	col_raw(&base);
 	base.mlx = mlx_init();
-	base.win = mlx_new_window(base.mlx, 1000, 1000, "So_Long");
-
+	base.win = mlx_new_window(base.mlx, col * 50, raw * 50, "So_Long");
 	just_drawing(&base);
-
 	mlx_hook(base.win, 17, 1L<<2, closing_x, &base);
 	mlx_hook(base.win, 02, 1L<<0, handle_moving, &base);
-
 	mlx_loop(base.mlx);
-
 	free(base.map);
 	base.map = NULL;
 }
@@ -50,7 +66,7 @@ static char		*map_reader(void)
 	int		i;
 	int		fd;
 	char	*map;
-	char    *next_line;
+	char	*next_line;
 
 	i = 0;
 	fd = open("./maps/map.ber", O_RDONLY);
@@ -78,6 +94,10 @@ static void		just_drawing(t_base *base)
 
 	i = 0;
 	base->tok_count = 0;
+	exit_checker(base);
+	position_checker(base);
+	coin_checker(base);
+
 	while (base->map[i] != '\0')
 	{
 		if (base->map[i] == '1')
@@ -97,26 +117,23 @@ static void		just_drawing(t_base *base)
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x, y);
 			x += 50;
 		}
-		else if (base->map[i] == 'p')
+		else if (base->map[i] == 'P')
 		{
 			base->xpm_img = mlx_xpm_file_to_image(base->mlx, base->chara, &base->width, &base->height);
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x, y);
 			x_chara = x;
 			y_chara = y;
-			// printf("x_chara is: %d\n", x_chara);
-			// printf("y_chara is: %d\n", y_chara);
 			index_chara = i;
-			printf("index_chara is:%d\n", index_chara);
 			x += 50;
 		}
-		else if (base->map[i] == 'c')
+		else if (base->map[i] == 'C')
 		{
 			base->xpm_img = mlx_xpm_file_to_image(base->mlx, base->token, &base->width, &base->height);
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x, y);
 			base->tok_count++;
 			x += 50;
 		}
-		else if (base->map[i] == 'e')
+		else if (base->map[i] == 'E')
 		{
 			base->xpm_img = mlx_xpm_file_to_image(base->mlx, base->exit, &base->width, &base->height);
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x, y);
@@ -140,7 +157,7 @@ static int		handle_moving(int key, t_base *base)
 			{
 				if (collected_coins == base->tok_count)
 				{
-					printf("Congratulations, the game is finished now.");
+					printf("Congratulations, the game is finished now.\n");
 					exit(EXIT_SUCCESS);
 				}
 			}
@@ -151,6 +168,9 @@ static int		handle_moving(int key, t_base *base)
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x_chara, y_chara);
 			if (check_coins(index_chara, base) == 1)
 				collected_coins++;
+			moves++;
+			printf ("\033c");
+			printf("moves :%d\n", moves);
 		}
 	}
 	if (key == 1) //--S
@@ -163,7 +183,7 @@ static int		handle_moving(int key, t_base *base)
 			{
 				if (collected_coins == base->tok_count)
 				{
-					printf("Congratulations, the game is finished now.");
+					printf("Congratulations, the game is finished now.\n");
 					exit(EXIT_SUCCESS);
 				}
 			}
@@ -174,7 +194,9 @@ static int		handle_moving(int key, t_base *base)
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x_chara, y_chara);
 			if (check_coins(index_chara, base) == 1)
 				collected_coins++;
-			printf("Collected coins is: %d\n", collected_coins);
+			moves++;
+			printf ("\033c");
+			printf("moves :%d\n", moves);
 		}
 	}
 	if (key == 2) //--D
@@ -187,7 +209,7 @@ static int		handle_moving(int key, t_base *base)
 			{
 				if (collected_coins == base->tok_count)
 				{
-					printf("Congratulations, the game is finished now.");
+					printf("Congratulations, the game is finished now.\n");
 					exit(EXIT_SUCCESS);
 				}
 			}
@@ -198,8 +220,9 @@ static int		handle_moving(int key, t_base *base)
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x_chara, y_chara);
 			if (check_coins(index_chara, base) == 1)
 				collected_coins++;
-			printf("Collected coins is: %d\n", collected_coins);
-
+			moves++;
+			printf ("\033c");
+			printf("moves :%d\n", moves);
 		}
 	}
 	if (key == 13) //-W
@@ -212,7 +235,7 @@ static int		handle_moving(int key, t_base *base)
 			{
 				if (collected_coins == base->tok_count)
 				{
-					printf("Congratulations, the game is finished now.");
+					printf("Congratulations, the game is finished now.\n");
 					exit(EXIT_SUCCESS);
 				}
 			}
@@ -223,8 +246,9 @@ static int		handle_moving(int key, t_base *base)
 			mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, x_chara, y_chara);
 			if (check_coins(index_chara, base) == 1)
 				collected_coins++;
-			printf("Collected coins is: %d\n", collected_coins);
-
+			moves++;
+			printf ("\033c");
+			printf("moves :%d\n", moves);
 		}
 	}
 	if (key == 53) //-ESC
@@ -249,7 +273,7 @@ static int		line_length(t_base *base)
 /*=======================================================================*/
 static int		check_walls(int future_chara_index, t_base *base)
 {
-	if (base->map[future_chara_index] == 'e' && collected_coins != base->tok_count)
+	if (base->map[future_chara_index] == 'E' && collected_coins != base->tok_count)
 		return (1);
 	if (base->map[future_chara_index] == '1')
 		return (1);
@@ -258,7 +282,7 @@ static int		check_walls(int future_chara_index, t_base *base)
 /*=======================================================================*/
 static int		check_coins(int index_chara, t_base *base)
 {
-	if (base->map[index_chara] == 'c')
+	if (base->map[index_chara] == 'C')
 	{
 		base->map[index_chara] = '0';
 		return (1);
@@ -266,17 +290,37 @@ static int		check_coins(int index_chara, t_base *base)
 	return (0);
 }
 /*=======================================================================*/
-static int	check_exit(int index_chara, t_base *base)
+static int		check_exit(int index_chara, t_base *base)
 {
-	if (base->map[index_chara] == 'e')
+	if (base->map[index_chara] == 'E')
 		return (1);
 	return (0);
 }
 /*=======================================================================*/
-/**********
- * NOTES: *
- **********
- * 1- if base->collected != (base->tok_count), Don't allow the character to exit from the door.
- * 2- check x, y for the chara.
- */
-/*=======================================================================*/
+static void		col_raw(t_base *base)
+{
+	int	i;
+
+	i = 0;
+	while (base->map[i] != '\0')
+	{
+		if (base->map[i] == '1')
+			col += 1;
+		else if (base->map[i] == '\n')
+		{
+			raw += 1;
+			col = 0;
+		}
+		else if (base->map[i] == '0')
+			col += 1;
+		else if (base->map[i] == 'P')
+			col += 1;
+		else if (base->map[i] == 'C')
+			col += 1;
+		else if (base->map[i] == 'E')
+			col += 1;
+		i++;
+	}
+	raw += 1;
+}
+// /*=======================================================================*/

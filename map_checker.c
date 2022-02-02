@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:44:13 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/01 12:25:48 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 01:33:36 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,56 @@ void	checking_map_rectangle(void)
 	line = NULL;
 	close(fd);
 }
+
+/*-----------------------------------------------------------------------*/
+void	exit_checker(t_base *base)
+{
+	int	i;
+
+	i = 0;
+	while (base->map[i] != '\0')
+	{
+		if (base->map[i] != 'E')
+			i++;
+		if(i >= (int)ft_strlen(base->map))
+			error(10, base->map);
+		if (base->map[i] == 'E')
+			break ;
+	}
+}
+
+/*-----------------------------------------------------------------------*/
+void	position_checker(t_base *base)
+{
+	int	i;
+
+	i = 0;
+	while (base->map[i] != '\0')
+	{
+		if (base->map[i] != 'P')
+			i++;
+		if(i >= (int)ft_strlen(base->map))
+			error(10, base->map);
+		if (base->map[i] == 'P')
+			break ;
+	}
+}
+
+/*-----------------------------------------------------------------------*/
+void	coin_checker(t_base *base)
+{
+	int	i;
+
+	i = 0;
+	while (base->map[i] != '\0')
+	{
+		if (base->map[i] != 'C')
+			i++;
+		if(i >= (int)ft_strlen(base->map))
+			error(10, base->map);
+		if (base->map[i] == 'C')
+			break ;
+	}
+}
+
 /*-----------------------------------------------------------------------*/
