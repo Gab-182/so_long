@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 20:42:11 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 01:59:10 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 04:59:54 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error(int i, char *buffer)
 	else if (i == 4)
 		printf("Error: Maps is not valid(bottom wall)\n");
 	else if (i == 10)
-		printf("Error: Maps is not valid('E' or 'P' or 'C' nor found)\n");
+		printf("Error: Maps is not valid(at least one coine 'C')\n");
 	else
 		printf("Error: Maps is not valid\n");
 	if (buffer != NULL)
@@ -38,7 +38,8 @@ void	error(int i, char *buffer)
 /*------------------------------------------------------------*/
 void	extension_error(void)
 {
-	printf("Wrong file extension)\n");
+	printf("\nWrong file extension!!!!!\n");
+	printf("We accept just (.ber) extension\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -82,20 +83,5 @@ void	ft_putnbr(int n)
 		}
 	}
 }
-/*------------------------------------------------------------*/
-char	*ft_strrchr(char *s, int c)
-{
-	int	n;
 
-	n = ft_strlen(s);
-	while (n >= 0)
-	{
-		if (s[n] == (char)c)
-		{
-			return ((char *)&s[n]);
-		}
-		n--;
-	}
-	return (0);
-}
 /*------------------------------------------------------------*/

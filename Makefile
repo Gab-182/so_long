@@ -6,15 +6,18 @@
 #    By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 18:22:15 by gabdoush          #+#    #+#              #
-#    Updated: 2022/01/29 20:32:05 by gabdoush         ###   ########.fr        #
+#    Updated: 2022/02/03 06:31:30 by gabdoush         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 FILES = so_long.c\
-		so_long_utils.c\
+		so_long_utils_1.c\
+		so_long_utils_2.c\
 		map_checker.c\
+		at_least_checker.c\
+		keys.c\
 		handling_maps.c\
 		./get_next_line/get_next_line.c\
 		./get_next_line/get_next_line_utils.c
