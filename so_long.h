@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 16:50:38 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:01:40 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 # include "./get_next_line/get_next_line.h"
-
 
 /*-----------------------------------------------------------------------*/
 typedef struct s_base
