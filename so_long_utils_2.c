@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:23:30 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 14:25:17 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:21:14 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,18 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
+/*=======================================================================*/
+
+void	finishing(void)
+{
+	printf("Congratulations, the game is finished now.\n");
+	exit(EXIT_SUCCESS);
+}
+
+/*=======================================================================*/
+void	print_moves(t_base *base)
+{
+	printf ("\033c");
+	printf("moves :%d\n", base->g_moves);
+}
 /*=======================================================================*/

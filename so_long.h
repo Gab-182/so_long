@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 15:04:20 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:50:38 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 # include "./get_next_line/get_next_line.h"
+
 
 /*-----------------------------------------------------------------------*/
 typedef struct s_base
@@ -77,6 +78,8 @@ void			extension_error(void);
 /*---------------------so_long_utils_2------------------------------------*/
 char			*ft_strrchr(char *s, int c);
 int				ft_strcmp(char *s1, char *s2);
+void			finishing(void);
+void			print_moves(t_base *base);
 /*-----------------------map_checker--------------------------------------*/
 void			check_bottom_wall(char *map_file);
 void			check_middle_walls(char *map_file);
@@ -95,11 +98,23 @@ int				line_length(t_base *base);
 /*---------------------------Keys----------------------------------------*/
 void			closing_esc(int key);
 int				closing_x(void);
-/*--------------------------map_indexes----------------------------------*/
-/*------------------------handling_maps----------------------------------*/
+void			key_a(t_base *base);
+void			key_s(t_base *base);
+void			key_d(t_base *base);
+/*----------------------------so_long.c----------------------------------*/
 void			map_drawer(char *map_file);
 char			*map_reader(char *map_file);
-int				handle_moving(int key, t_base *base);
+/*------------------------handling_maps----------------------------------*/
 void			just_drawing(t_base *base);
+int				handle_moving(int key, t_base *base);
+void			key_w(t_base *base);
+void			map_new_line(void);
+/*-------------------------map_struct-----------------------------------*/
+void			map_wall(t_base *base);
+void			map_floor(t_base *base);
+void			map_char(t_base *base, int i);
+void			map_coins(t_base *base);
+void			map_exit(t_base *base);
 /*-----------------------------------------------------------------------*/
+
 #endif
