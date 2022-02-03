@@ -6,7 +6,7 @@
 #    By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 18:22:15 by gabdoush          #+#    #+#              #
-#    Updated: 2022/02/03 06:31:30 by gabdoush         ###   ########.fr        #
+#    Updated: 2022/02/03 15:05:31 by gabdoush         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FILES = so_long.c\
 		so_long_utils_2.c\
 		map_checker.c\
 		at_least_checker.c\
+		res_checker.c\
 		keys.c\
 		handling_maps.c\
 		./get_next_line/get_next_line.c\

@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 09:36:06 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:04:20 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void			extension_error(void);
 /*---------------------so_long_utils_2------------------------------------*/
 char			*ft_strrchr(char *s, int c);
 int				ft_strcmp(char *s1, char *s2);
-/*-----------------------------------------------------------------------*/
+/*-----------------------map_checker--------------------------------------*/
 void			check_bottom_wall(char *map_file);
 void			check_middle_walls(char *map_file);
 void			checking_map_rectangle(char *map_file);
 void			check_top_walls(char *map_file);
+/*------------------------res_checker------------------------------------*/
 void			exit_checker(t_base *base);
 void			coin_checker(t_base *base);
 void			position_checker(t_base *base);
-//void			line_count(t_base *base);
 /*------------------------at_least_checker-------------------------------*/
 void			col_raw(t_base *base);
 int				check_exit(int index_chara, t_base *base);

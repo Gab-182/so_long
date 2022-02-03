@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 22:39:31 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 10:24:11 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:22:10 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	g_y = 0;
 
 int	g_index_chara = 0;
 int	g_future_chara_index = 0;
+
 /*=======================================================================*/
 void	map_drawer(char *map_file)
 {
@@ -263,7 +264,7 @@ int	handle_moving(int key, t_base *base)
 			mlx_put_image_to_window
 				(base->mlx, base->win, base->xpm_img,
 				base->g_x_chara, base->g_y_chara);
-				
+
 			if (check_coins(g_index_chara, base) == 1)
 				base->g_collected_coins++;
 			base->g_moves++;

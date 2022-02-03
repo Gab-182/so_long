@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 05:08:56 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 10:32:43 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/03 12:46:43 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	line_length(t_base *base)
 int	check_walls(int future_chara_index, t_base *base)
 {
 	if (base->map[future_chara_index] == 'E'
-		&& base->g_collected_coins-1 != base->tok_count)
+		&& base->g_collected_coins - 1 != base->tok_count)
 		return (1);
 	if (base->map[future_chara_index] == '1')
 		return (1);
