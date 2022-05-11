@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 20:42:11 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 14:24:01 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:20:39 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 void	error(int i, char *buffer)
 {
 	if (i == 1)
-		printf("Error: Maps is not valid(not rectangle )\n");
+		ft_printf("Error: Maps is not valid\n");
 	else if (i == 2)
-		printf("Error: Maps is not valid(top wall)\n");
+		ft_printf("Error: Maps is not valid\n");
 	else if (i == 3)
-		printf("Error: Maps is not valid(middle wall)\n");
+		ft_printf("Error: Maps is not valid\n");
 	else if (i == 4)
-		printf("Error: Maps is not valid(bottom wall)\n");
+		ft_printf("Error: Maps is not valid\n");
 	else if (i == 10)
-		printf("Error: Maps is not valid(at least one coine 'C')\n");
+		ft_printf("Error: Maps is not valid(at least one coine 'C')\n");
 	else
-		printf("Error: Maps is not valid\n");
+		ft_printf("Error: Maps is not valid\n");
 	if (buffer != NULL)
 	{
 		free(buffer);
@@ -38,50 +38,9 @@ void	error(int i, char *buffer)
 /*=======================================================================*/
 void	extension_error(void)
 {
-	printf("\nWrong file extension!!!!!\n");
-	printf("We accept just (.ber) extension\n");
+	ft_printf("\nWrong file extension!!!!!\n");
+	ft_printf("We accept just (.ber) extension\n");
 	exit(EXIT_FAILURE);
-}
-
-/*=======================================================================*/
-void	ft_putchar(int c)
-{
-	write(1, &c, 1);
-}
-
-/*=======================================================================*/
-void	ft_putstr(char *s)
-{
-	while (*s)
-	{
-		write(1, s, 1);
-		s++;
-	}
-}
-
-/*=======================================================================*/
-void	ft_putnbr(int n)
-{
-	int		len;
-
-	len = 0;
-	if (n <= 2147483647 && n >= -2147483648)
-	{
-		if (n < 0)
-		{
-			if (n == -2147483648)
-				return (ft_putstr("-2147483648"));
-			ft_putchar('-');
-			n = n * -1;
-		}
-		if (n <= 9)
-			ft_putchar(n + '0');
-		if (n > 9)
-		{
-			ft_putnbr(n / 10);
-			ft_putnbr(n % 10);
-		}
-	}
 }
 
 /*=======================================================================*/

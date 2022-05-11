@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 00:33:17 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 16:47:33 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:54:02 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	map_drawer(char *map_file)
 	base.height = 1;
 	col_raw(&base);
 	base.mlx = mlx_init();
-	base.win = mlx_new_window
-		(base.mlx, base.g_col * 50, base.g_raw * 50, "So_Long");
+	base.win = mlx_new_window(base.mlx, base.g_col * 50, base.g_raw * 50, \
+	"So_Long");
 	just_drawing(&base);
 	mlx_hook(base.win, 17, 1L << 2, closing_x, &base);
 	mlx_hook(base.win, 02, 1L << 0, handle_moving, &base);
@@ -76,6 +76,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		ext = ft_strrchr(argv[1], '.');
+		if (!ext)
+			extension_error();
 		if (ft_strcmp(ext, ptr) != 0)
 			extension_error();
 		check_top_walls(argv[1]);
@@ -86,8 +88,8 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printf("\nError, put only one (1) argument in your programe.\n");
-		printf("\n----> ./so_long {map_name.ber}<----\n");
+		ft_printf("\nError, put only one (1) argument in your programe.\n");
+		ft_printf("\n----> ./so_long {map_name.ber}<----\n");
 		exit(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:17:08 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 17:01:40 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:53:37 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include "./mlx/mlx.h"
 # include "./get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
 
 /*-----------------------------------------------------------------------*/
 typedef struct s_base
@@ -69,9 +70,6 @@ typedef struct s_data
 	int		endian;
 }		t_data;
 /*----------------------so_long_utils_1-----------------------------------*/
-void			ft_putchar(int c);
-void			ft_putstr(char *s);
-void			ft_putnbr(int n);
 void			error(int i, char *buffer);
 void			extension_error(void);
 /*---------------------so_long_utils_2------------------------------------*/
@@ -95,8 +93,8 @@ int				check_coins(int index_chara, t_base *base);
 int				check_walls(int future_chara_index, t_base *base);
 int				line_length(t_base *base);
 /*---------------------------Keys----------------------------------------*/
-void			closing_esc(int key);
-int				closing_x(void);
+void			closing_esc(int key, t_base *data);
+int				closing_x(t_base *data);
 void			key_a(t_base *base);
 void			key_s(t_base *base);
 void			key_d(t_base *base);

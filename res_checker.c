@@ -6,7 +6,7 @@
 /*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 15:03:04 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 15:03:10 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/02/06 17:23:50 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exit_checker(t_base *base)
 	}
 	if (e_counter != 1)
 	{
-		printf("Error, Should be one Exit...\n");
+		ft_printf("Error, Should be one Exit...\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -48,7 +48,7 @@ void	position_checker(t_base *base)
 	}
 	if (p_counter != 1)
 	{
-		printf("Error, Should be one Character...\n");
+		ft_printf("Error, Should be one Character...\n");
 		exit(EXIT_FAILURE);
 	}
 }

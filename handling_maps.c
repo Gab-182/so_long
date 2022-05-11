@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handling_maps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 22:39:31 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 16:52:52 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:52:48 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	g_y = 0;
 int	g_index_chara = 0;
 int	g_future_chara_index = 0;
 
-/*=======================================================================*/
+/*============================================================================*/
 void	just_drawing(t_base *base)
 {
 	int	i;
@@ -60,7 +60,7 @@ int	handle_moving(int key, t_base *base)
 		key_d(base);
 	if (key == 13)
 		key_w(base);
-	closing_esc(key);
+	closing_esc(key, base);
 	return (0);
 }
 
@@ -76,17 +76,17 @@ void	key_w(t_base *base)
 			if ((base->g_collected_coins) - 1 == base->tok_count)
 				finishing();
 		}
-		base->xpm_img = mlx_xpm_file_to_image
-			(base->mlx, base->floor, &base->width, &base->height);
-		mlx_put_image_to_window
-			(base->mlx, base->win, base->xpm_img,
-			base->g_x_chara, base->g_y_chara);
+		mlx_destroy_image(base->mlx, base->xpm_img);
+		base->xpm_img = mlx_xpm_file_to_image(base->mlx, base->floor, \
+		&base->width, &base->height);
+		mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, \
+		base->g_x_chara, base->g_y_chara);
 		base->g_y_chara -= 50;
-		base->xpm_img = mlx_xpm_file_to_image
-			(base->mlx, base->chara, &base->width, &base->height);
-		mlx_put_image_to_window
-			(base->mlx, base->win, base->xpm_img,
-			base->g_x_chara, base->g_y_chara);
+		mlx_destroy_image(base->mlx, base->xpm_img);
+		base->xpm_img = mlx_xpm_file_to_image(base->mlx, base->chara, \
+		&base->width, &base->height);
+		mlx_put_image_to_window(base->mlx, base->win, base->xpm_img, \
+		base->g_x_chara, base->g_y_chara);
 		if (check_coins(g_index_chara, base) == 1)
 			base->g_collected_coins++;
 		base->g_moves++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 10:45:06 by gabdoush          #+#    #+#             */
-/*   Updated: 2021/11/13 10:46:00 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:10:57 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_get_next_text(char *edited_buffer)
 		return (NULL);
 	}
 	next_text = (char *)malloc(sizeof(char)
-			 * (ft_strlen(edited_buffer) - i + 1));
+			* (ft_strlen(edited_buffer) - i + 1));
 	if (!next_text)
 		return (NULL);
 	i++;

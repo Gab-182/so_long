@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabdoush <gabdoush@42ABUDHABI.AE>          +#+  +:+       +#+        */
+/*   By: gabdoush <gabdoush@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 10:45:04 by gabdoush          #+#    #+#             */
-/*   Updated: 2022/02/03 04:20:00 by gabdoush         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:10:46 by gabdoush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin(char *edited_buffer, char *buff)
 	if (!edited_buffer || !buff)
 		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(edited_buffer)
-					 + ft_strlen(buff)) + 1));
+					+ ft_strlen(buff)) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = -1;
